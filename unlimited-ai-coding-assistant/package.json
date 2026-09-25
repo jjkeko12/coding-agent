@@ -1,0 +1,52 @@
+{
+  "name": "codecraft-ai",
+  "productName": "CodeCraft AI",
+  "version": "1.0.0",
+  "description": "Unlimited AI Coding Assistant for macOS",
+  "private": true,
+  "main": "dist-electron/electron-main.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "electron:dev": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && tsc -p electron/tsconfig.json && electron .\"",
+    "electron:build": "npm run build && tsc -p electron/tsconfig.json && electron-builder",
+    "electron:build:mac": "npm run build && tsc -p electron/tsconfig.json && electron-builder --mac",
+    "electron:build:mac:dmg": "npm run build && tsc -p electron/tsconfig.json && electron-builder --mac dmg",
+    "electron:build:mac:zip": "npm run build && tsc -p electron/tsconfig.json && electron-builder --mac zip",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "@types/uuid": "^10.0.0",
+    "concurrently": "^10.0.5",
+    "dotenv": "17.3.1",
+    "drizzle-orm": "0.45.2",
+    "electron": "^44.4.5",
+    "electron-builder": "^26.15.3",
+    "lucide-react": "^1.48.0",
+    "next": "16.2.6",
+    "pg": "8.20.0",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "uuid": "^14.0.2",
+    "wait-on": "^8.0.3",
+    "zod": "^4.6.5",
+    "zod-to-json-schema": "^3.25.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.1.17",
+    "@types/electron": "^1.6.4",
+    "@types/node": "22.19.15",
+    "@types/pg": "8.18.0",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "drizzle-kit": "0.31.10",
+    "eslint": "9.39.4",
+    "eslint-config-next": "16.2.6",
+    "postcss": "8.5.8",
+    "tailwindcss": "4.1.17",
+    "typescript": "5.9.3"
+  }
+}

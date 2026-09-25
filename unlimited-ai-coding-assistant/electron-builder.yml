@@ -1,0 +1,47 @@
+appId: com.codecraft.ai
+productName: CodeCraft AI
+directories:
+  buildResources: build
+  output: dist
+files:
+  - from: .
+    filter:
+      - package.json
+      - out
+      - dist-electron
+mac:
+  target:
+    - target: dmg
+      arch:
+        - x64
+        - arm64
+    - target: zip
+      arch:
+        - x64
+        - arm64
+  category: public.app-category.developer-tools
+  icon: public/icon.png
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
+  extendInfo:
+    NSCameraUsageDescription: Camera access for visual coding assistance
+    NSMicrophoneUsageDescription: Microphone access for voice commands
+    NSDocumentsFolderUsageDescription: Access to documents for file management
+    NSDownloadsFolderUsageDescription: Access to downloads folder
+  type: distribution
+  identity: null
+dmg:
+  title: 'CodeCraft AI'
+  icon: public/icon.png
+  contents:
+    - x: 130
+      y: 220
+    - x: 490
+      y: 220
+      type: link
+      path: /Applications
+asarUnpack:
+  - dist-electron/**
+  - out/**
